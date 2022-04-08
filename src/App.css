@@ -1,38 +1,47 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inputForm {
+  width: 55%;
+  margin: 10px 0px;
+  height: 40px;
+  padding: 10px 20px;
+  border: 1px solid rgb(196, 189, 189);
+  border-radius: 10px;
+}
+.todo-container{ 
+  /* border: 1px solid rgb(154, 4, 4); */
+  
+}
+.note-card {
+  width: 100%;
+  border: 1px solid rgb(223, 212, 212);
+  border-radius: 5px; 
+  margin: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.remove-btn{
+  float: right;
+  margin: -15px;
+  border: none;
+  font-size: 30px;
+  background-color: transparent;
+  font-family: monospace;
+  color: black;
+}
+.color{ 
+  padding: 0px;
+  border: none;
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 600px) {
+  .inputForm {
+    width: 90%;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media only screen and (max-width: 425px) {
+  .inputForm {
+    width: 90%;
   }
 }
