@@ -1,14 +1,14 @@
 import React, { useCallback, useReducer, useRef, useState } from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css"; 
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Form } from "react-bootstrap";
 import { Grid } from "@mui/material";
 
 function App() {
-// todo card backgound color
-    const [color, setColor] = useState("#b3a7c6");
-  
-    interface Todo {
+  //  newtodo card background color
+  const [color, setColor] = useState("#b3a7c6");
+
+  interface Todo {
     id: number;
     text: string;
     subject: string;
@@ -19,13 +19,12 @@ function App() {
     | { type: "ADD"; text: string; subject: string }
     | { type: "REMOVE"; id: number };
 
-
-    // useReducer hook 
+  // useReducer hook
   function reducer(state: Todo[], action: ActionType) {
     switch (action.type) {
-      // Add a todo 
+      // Add a todo
       case "ADD":
-        //Add todo in local storage 
+        //Add todo in local storage
         const a: Todo[] = [
           ...state,
           { id: state.length + 1, text: action.text, subject: action.subject },
@@ -39,16 +38,16 @@ function App() {
             subject: action.subject,
           },
         ];
-        // Remove todo
-        case "REMOVE":
-          const arrayItem = state.filter((todo) => todo.id !== action.id);
-          // Remove todo from localStorage
+      // Remove todo
+      case "REMOVE":
+        const arrayItem = state.filter((todo) => todo.id !== action.id);
+        // Remove todo from localStorage
         localStorage.setItem("todo", JSON.stringify(arrayItem));
 
         return state.filter((todo) => todo.id !== action.id);
     }
   }
-  // initiale Value
+  // initial Value
   const newTodos: Todo[] = JSON.parse(localStorage.getItem("todo") || "[]");
 
   //reducer
@@ -79,9 +78,7 @@ function App() {
     }
   }, []);
 
-
-
-// set Background color
+  // set Background color
   const backgroundColorStyle = {
     backgroundColor: color,
   };
@@ -106,8 +103,7 @@ function App() {
         />
         <input className="inputForm" type="submit" />
       </form>
-{/*  Show the todo list */}
-
+      {/*  Show the todo list */}
       <div>
         <Container className="todo-container">
           <Grid container spacing={4}>
@@ -124,17 +120,17 @@ function App() {
                   {/* Dynamic color picker  */}
                   <Form.Control
                     className="color"
-                    size="sm"
-                    type="color"
-                    id="exampleColorInput"
+                    // size="sm"
+                    style={{width:30 ,height:10,margin:5,padding:0,border:"none"}}
+                    type="color" 
                     defaultValue="#563d7c"
                     title="Choose your color"
                     onChange={(e) => setColor(e.target.value)}
                   />
 
-                  {/*   Todo informtaion */}
+                  {/*   Todo information */}
                   <big>
-                    Subject:
+                    title:
                     <b>{todo?.subject}</b>
                   </big>
                   <p> {todo?.text}</p>
